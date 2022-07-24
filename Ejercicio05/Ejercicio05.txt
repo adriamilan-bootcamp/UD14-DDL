@@ -15,6 +15,6 @@ CREATE TABLE Cajas (
   Valor INT NULL,
   Almacen INT NULL,
   almacenes_codigo VARCHAR(45) NULL,
-  PRIMARY KEY (NumReferencia)
+  PRIMARY KEY (NumReferencia),
   FOREIGN KEY (almacenes_codigo) REFERENCES Almacenes(Codigo)
 );

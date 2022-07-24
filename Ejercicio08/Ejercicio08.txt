@@ -18,7 +18,7 @@ CREATE TABLE Suministra (
   CodigoPieza INT NOT NULL,
   IdProveedor CHAR(4) NOT NULL,
   Precio INT NULL,
-  PRIMARY KEY (CodigoPieza, IdProveedor)
-  FOREIGN KEY (CodigoPieza) REFERENCES Piezas(Codigo)
+  PRIMARY KEY (CodigoPieza, IdProveedor),
+  FOREIGN KEY (CodigoPieza) REFERENCES Piezas(Codigo),
   FOREIGN KEY (IdProveedor) REFERENCES Proveedores(Id)
 );

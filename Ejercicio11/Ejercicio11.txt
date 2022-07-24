@@ -1,0 +1,47 @@
+CREATE DATABASE Ejercicio11;
+
+USE Ejercicio11;
+
+CREATE TABLE Facultad (
+  Codigo INT NOT NULL,
+  Nombre NVARCHAR(100) NULL,
+  PRIMARY KEY (Codigo)
+);
+
+CREATE TABLE Equipos (
+  NumSerie CHAR(4) NOT NULL,
+  Nombre NVARCHAR(100) NULL,
+  Facultad INT NULL,
+  PRIMARY KEY (NumSerie),
+  FOREIGN KEY (Facultad) 
+  REFERENCES Facultad(Codigo)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);
+
+CREATE TABLE Investigadores (
+  DNI VARCHAR(8) NOT NULL,
+  NomApels NVARCHAR(255) NULL,
+  Facultad INT NULL,
+  PRIMARY KEY (DNI),
+  FOREIGN KEY (Facultad) 
+  REFERENCES Facultad(Codigo)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);
+
+CREATE TABLE Reserva (
+  DNI VARCHAR(8) NOT NULL,
+  NumSerie CHAR(4) NOT NULL,
+  Comienzo DATETIME NULL,
+  Fin DATETIME NULL,
+  PRIMARY KEY (DNI, NumSerie),
+  FOREIGN KEY (DNI) 
+  REFERENCES Investigadores(DNI)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  FOREIGN KEY (NumSerie) 
+  REFERENCES Equipos(NumSerie)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);

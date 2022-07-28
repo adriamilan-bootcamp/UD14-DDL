@@ -16,5 +16,5 @@ CREATE TABLE Cajas (
   Almacen INT NULL,
   almacenes_codigo VARCHAR(45) NULL,
   PRIMARY KEY (NumReferencia),
-  FOREIGN KEY (almacenes_codigo) REFERENCES Almacenes(Codigo)
+  CONSTRAINT cajas_almacenes_codigo FOREIGN KEY (almacenes_codigo) REFERENCES Almacenes(Codigo)
 );

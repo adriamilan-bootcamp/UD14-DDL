@@ -19,6 +19,10 @@ CREATE TABLE Suministra (
   IdProveedor CHAR(4) NOT NULL,
   Precio INT NULL,
   PRIMARY KEY (CodigoPieza, IdProveedor),
-  FOREIGN KEY (CodigoPieza) REFERENCES Piezas(Codigo),
-  FOREIGN KEY (IdProveedor) REFERENCES Proveedores(Id)
+  CONSTRAINT ivestigadores_facultad FOREIGN KEY (CodigoPieza) REFERENCES Piezas(Codigo)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  CONSTRAINT suministra_proveedores FOREIGN KEY (IdProveedor) REFERENCES Proveedores(Id)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
 );

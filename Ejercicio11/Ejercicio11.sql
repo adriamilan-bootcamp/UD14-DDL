@@ -13,7 +13,7 @@ CREATE TABLE Equipos (
   Nombre NVARCHAR(100) NULL,
   Facultad INT NULL,
   PRIMARY KEY (NumSerie),
-  FOREIGN KEY (Facultad) 
+  CONSTRAINT equipos_facultad FOREIGN KEY (Facultad) 
   REFERENCES Facultad(Codigo)
   ON DELETE CASCADE
   ON UPDATE CASCADE
@@ -24,7 +24,7 @@ CREATE TABLE Investigadores (
   NomApels NVARCHAR(255) NULL,
   Facultad INT NULL,
   PRIMARY KEY (DNI),
-  FOREIGN KEY (Facultad) 
+  CONSTRAINT ivestigadores_facultad FOREIGN KEY (Facultad) 
   REFERENCES Facultad(Codigo)
   ON DELETE CASCADE
   ON UPDATE CASCADE
@@ -36,11 +36,11 @@ CREATE TABLE Reserva (
   Comienzo DATETIME NULL,
   Fin DATETIME NULL,
   PRIMARY KEY (DNI, NumSerie),
-  FOREIGN KEY (DNI) 
+  CONSTRAINT reserva_dni FOREIGN KEY (DNI) 
   REFERENCES Investigadores(DNI)
   ON DELETE CASCADE
   ON UPDATE CASCADE,
-  FOREIGN KEY (NumSerie) 
+  CONSTRAINT reserva_numserie FOREIGN KEY (NumSerie) 
   REFERENCES Equipos(NumSerie)
   ON DELETE CASCADE
   ON UPDATE CASCADE
